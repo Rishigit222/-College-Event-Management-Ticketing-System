@@ -19,8 +19,8 @@ void print_attendee_list(const Event *e) {
     for (int i = 0; i < e->capacity; ++i) {
         if (e->seats[i].bookingId != 0) {
             const Attendee *a = &e->seats[i];
-            const char *typeName = (a->ticketTypeIndex>=0 && a->ticketTypeIndex<e->numTicketTypes)
-                  ? e->ticketTypes[a->ticketTypeIndex].name : "?";
+            const char *typeName = (a->ticketTypeIndex >= 0 && a->ticketTypeIndex < e->numTicketTypes)
+                ? e->ticketTypes[a->ticketTypeIndex].name : "?";
             printf("  %-5d %-24s %-28s %-8s %-5d\n",
                    a->seatNumber, a->name, a->email, typeName, a->bookingId);
             shown++;
@@ -35,8 +35,8 @@ void print_waitlist(const Event *e) {
     int pos = 1;
     for (const WaitNode *n = e->waitHead; n; n = n->next) {
         const Attendee *a = &n->data;
-        const char *typeName = (a->ticketTypeIndex>=0 && a->ticketTypeIndex<e->numTicketTypes)
-              ? e->ticketTypes[a->ticketTypeIndex].name : "?";
+        const char *typeName = (a->ticketTypeIndex >= 0 && a->ticketTypeIndex < e->numTicketTypes)
+            ? e->ticketTypes[a->ticketTypeIndex].name : "?";
         printf("  %-5d %-24s %-28s %-8s %-5d\n",
                pos++, a->name, a->email, typeName, a->bookingId);
     }
@@ -51,3 +51,4 @@ void print_all_events(Event events[], int eventCount) {
     if (eventCount == 0) printf("(no events yet)\n");
     printf("==========================================\n");
 }
+
